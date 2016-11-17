@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+			<!-- Titulo pesta�a -->
+			<title>Simulador de planes de emergencia</title>
+
+			<!-- N�cleo Bootstrap CSS -->
+			<link href="css/bootstrap.css" rel="stylesheet">
+
+			<!-- CSS personalizado -->
+			<link href="css/stylish-portfolio.css" rel="stylesheet">
+
+			<!-- CSS personalizar panel -->
+			<link href="css/style.css" rel="stylesheet">
+
+			<!-- Fuentes de letra -->
+			<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+		 <script src="ts/visualizacionSimbolos.js" type="text/javascript"> </script>
+	</head>
+
+	<body>
+
+		<!-- Men� de navegaci�n -->
+    	<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    	<nav id="sidebar-wrapper">
+        	<ul class="sidebar-nav">
+            	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            	<li class="sidebar-brand">
+                	<h3 class="menu">Men�</h3>
+            	</li>
+            	<li>
+                	<a href="#top" onclick=$("#menu-close").click();>Inicio</a>
+            	</li>
+            	<li>
+                	<a href="#about" onclick=$("#menu-close").click();>Informaci�n</a>
+            	</li>
+            	<li>
+                	<a href="#portfolio" onclick=$("#menu-close").click();>Editor</a>
+            	</li>
+            	<li>
+            		<a href="#copyright" onclick=$("#menu-close").click();>Derechos de autor</a>
+        		</li>
+        	</ul>
+    	</nav>
+
+    	<!-- Inicio -->
+    	<header id="top" class="header">
+        	<div class="text-vertical-center">
+            	<h1>Bienvenido al editor de planos de emergencia</h1>
+            	<br>
+            	<a href="#about" class="btn btn-dark btn-lg">Empecemos</a>
+        	</div>
+        	<!-- /.text-vertical-center -->
+    	</header>
+
+    	<!-- Informaci�n -->
+    	<section id="about" class="about">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-lg-12 text-center">
+                    	<h2>Crea, guarda y simula tus planos de emergencia.</h2>
+                    	<p class="lead">Con este nuevo formato podr� realizar sus planos mucho m�s sencillamente.</p>
+                	</div>
+                	<!-- /.col-lg-10 -->
+            	</div>
+            	<!-- /.row -->
+        	</div>
+        	<!-- /.container -->
+    	</section>
+
+    	<!-- Editor -->
+    	<section id="portfolio" class="portfolio bg-primary">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-lg-10 col-lg-offset-1 text-center">
+                    	<h2>Dise�e el plan de emergencia</h2>
+                    	<hr>
+                    </div>
+                    <!-- /.col-lg-10 -->
+
+                    <div class="col-lg-8">
+                    	<canvas id="canvas" class="style-panel"></canvas>
+                    </div>
+                    <!-- /.col-lg-8 -->
+
+					<div class="col-lg-4 text-center">
+
+						<h2 class="text-left">Simbolos BPMN</h2>
+						<h4 class="text-left">Actividades:</h4>
+  						<select class="selected2">
+    						<option >Seleccione uno:</option>
+   	 						<option id="ad-hoc">Ad-hoc</option>
+    						<option >Bucle</option>
+    						<option >Bucle 2</option>
+    						<option >Compensaci�n</option>
+    						<option >Instancia m�ltiple</option>
+    						<option >Instancia m�ltiple 2</option>
+    						<option >Sub-proceso colapsado</option>
+    						<option >Tarea</option>
+  						</select>
+  						<button class="bottom-selec">Seleccionar</button>
+
+  						<h4 class="text-left">Conectividad:</h4>
+  						<select class="selected2" id="select20" onchange="conectar(this.value)">
+    						<option value="">Seleccione uno:</option>
+   	 						<option id="asociacion" value="1">Flujo asociacion</option>
+    						<option id ="mensaje" value="2">Flujo mensaje</option>
+    						<option id="secuencia" value="3">Flujo secuencia</option>
+  						</select>
+  						<button id="buttonConect" class="bottom-selec">Seleccionar</button>
+
+  						<h4 class="text-left">Eventos:</h4>
+  						<select class="selected2">
+    						<option>Seleccione uno:</option>
+   	 						<option>Inicio</option>
+    						<option>Intermedio</option>
+    						<option>Final</option>
+    						<option>Mensaje inicio</option>
+    						<option>Mensaje intermedio</option>
+    						<option>Mensaje final</option>
+    						<option>Error intermedio</option>
+    						<option>Error final</option>
+    						<option>Cancelaci�n intermedia</option>
+    						<option>Cancelaci�n final</option>
+    						<option>Tiempo inicial</option>
+    						<option>Tiempo intermedio</option>
+    						<option>Compensaci�n intermedia</option>
+    						<option>Compensaci�n final</option>
+    						<option>Vinculo inicial</option>
+    						<option>Vinculo intermedio</option>
+    						<option>Vinculo final</option>
+    						<option>Regla inicial</option>
+    						<option>Regla intermedia</option>
+    						<option>Multiple inicio</option>
+    						<option>M�ltiple intermedio</option>
+    						<option>M�ltiple final</option>
+  						</select>
+  						<button class="bottom-selec">Seleccionar</button>
+
+  						<h4 class="text-left">Nodos de decisi�n:</h4>
+  						<select class="selected2">
+    						<option >Seleccione uno:</option>
+   	 						<option >Decis�n basada en datos</option>
+    						<option >Decisi�n basada en eventos</option>
+    						<option >Decisi�n m�ltiple</option>
+    						<option >Decisi�n uni�n compleja</option>
+    						<option >Decisi�n uni�n paralela</option>
+    						<option >Decisi�n combinaci�n inclusiva</option>
+  						</select>
+  						<button class="bottom-selec">Seleccionar</button>
+
+						<canvas id="canvas2" class="style-object"></canvas>
+  					</div>
+
+
+										<!-- /.col-lg-4 -->
+
+                    <div class="container2">
+                    	<a href="#about" class="bottom navbar-btn col-xs-3 col-xs-push-1">Editar</a>
+                    	<a href="#about" class="bottom navbar-btn col-xs-3 col-xs-push-1">Borrar</a>
+                    	<a href="#about" class="bottom navbar-btn col-xs-3 col-xs-push-1">Guardar</a>
+                    </div>
+            		<!-- /.container2 -->
+            	</div>
+            	<!-- /.row -->
+        	</div>
+        	<!-- /.container -->
+    	</section>
+
+    	<!-- Derechos de autor -->
+    	<section id="copyright" class="about">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-lg-12 text-center">
+                    	<h3>�2016 Alvaro Campos Serrano </h3>
+                	</div>
+            	</div>
+            	<!-- /.row -->
+        	</div>
+        	<!-- /.container -->
+    	</section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+    </script>
+
+	</body>
+</html>
