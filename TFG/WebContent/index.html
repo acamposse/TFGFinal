@@ -29,13 +29,13 @@
         	<ul class="sidebar-nav">
             	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             	<li class="sidebar-brand">
-                	<h3 class="menu">Menï¿½</h3>
+                	<h3 class="menu">Menú</h3>
             	</li>
             	<li>
                 	<a href="#top" onclick=$("#menu-close").click();>Inicio</a>
             	</li>
             	<li>
-                	<a href="#about" onclick=$("#menu-close").click();>Informaciï¿½n</a>
+                	<a href="#about" onclick=$("#menu-close").click();>Información</a>
             	</li>
             	<li>
                 	<a href="#portfolio" onclick=$("#menu-close").click();>Editor</a>
@@ -62,7 +62,7 @@
             	<div class="row">
                 	<div class="col-lg-12 text-center">
                     	<h2>Crea, guarda y simula tus planos de emergencia.</h2>
-                    	<p class="lead">Con este nuevo formato podrï¿½ realizar sus planos mucho mï¿½s sencillamente.</p>
+                    	<p class="lead">Con este nuevo formato podrá realizar sus planos mucho más sencillamente.</p>
                 	</div>
                 	<!-- /.col-lg-10 -->
             	</div>
@@ -76,7 +76,7 @@
         	<div class="container">
             	<div class="row">
                 	<div class="col-lg-10 col-lg-offset-1 text-center">
-                    	<h2>Diseï¿½e el plan de emergencia</h2>
+                    	<h2>Diseñe el plan de emergencia</h2>
                     	<hr>
                     </div>
                     <!-- /.col-lg-10 -->
@@ -90,18 +90,18 @@
 
 						<h2 class="text-left">Simbolos BPMN</h2>
 						<h4 class="text-left">Actividades:</h4>
-  						<select class="selected2">
-    						<option >Seleccione uno:</option>
-   	 						<option id="ad-hoc">Ad-hoc</option>
-    						<option >Bucle</option>
-    						<option >Bucle 2</option>
-    						<option >Compensaciï¿½n</option>
-    						<option >Instancia mï¿½ltiple</option>
-    						<option >Instancia mï¿½ltiple 2</option>
-    						<option >Sub-proceso colapsado</option>
-    						<option >Tarea</option>
+  						<select class="selected2" onchange="actividades(this.value)">
+    						<option value="">Seleccione uno:</option>
+   	 						<option id="adhoc" value="1">Ad-hoc</option>
+    						<option id="bucle" value="2">Bucle</option>
+    						<option id="bucle2" value="3">Bucle 2</option>
+    						<option id="compensacion" value="4">Compensación</option>
+    						<option id="instMul" value="5">Instancia múltiple</option>
+    						<option id="instMul2" value="6">Instancia múltiple 2</option>
+    						<option id="subProc" value="7">Sub-proceso colapsado</option>
+    						<option id="tarea" value="8">Tarea</option>
   						</select>
-  						<button class="bottom-selec">Seleccionar</button>
+  						<button id="buttonActividad" class="bottom-selec">Seleccionar</button>
 
   						<h4 class="text-left">Conectividad:</h4>
   						<select class="selected2" id="select20" onchange="conectar(this.value)">
@@ -113,44 +113,44 @@
   						<button id="buttonConect" class="bottom-selec">Seleccionar</button>
 
   						<h4 class="text-left">Eventos:</h4>
-  						<select class="selected2">
-    						<option>Seleccione uno:</option>
-   	 						<option>Inicio</option>
-    						<option>Intermedio</option>
-    						<option>Final</option>
-    						<option>Mensaje inicio</option>
-    						<option>Mensaje intermedio</option>
-    						<option>Mensaje final</option>
-    						<option>Error intermedio</option>
-    						<option>Error final</option>
-    						<option>Cancelaciï¿½n intermedia</option>
-    						<option>Cancelaciï¿½n final</option>
-    						<option>Tiempo inicial</option>
-    						<option>Tiempo intermedio</option>
-    						<option>Compensaciï¿½n intermedia</option>
-    						<option>Compensaciï¿½n final</option>
-    						<option>Vinculo inicial</option>
-    						<option>Vinculo intermedio</option>
-    						<option>Vinculo final</option>
-    						<option>Regla inicial</option>
-    						<option>Regla intermedia</option>
-    						<option>Multiple inicio</option>
-    						<option>Mï¿½ltiple intermedio</option>
-    						<option>Mï¿½ltiple final</option>
+  						<select class="selected2" onchange="evento(this.value)">
+    						<option value="">Seleccione uno:</option>
+   	 						<option id="inicio" value="1">Inicio</option>
+    						<option id="intermedio" value="2">Intermedio</option>
+    						<option id="final" value="3">Final</option>
+    						<option id="menInicio" value="4">Mensaje inicio</option>
+    						<option id="menIntermedio" value="5">Mensaje intermedio</option>
+    						<option id="menFinal" value="6">Mensaje final</option>
+    						<option id="errorInter" value="7">Error intermedio</option>
+    						<option id="errorFin" value="8">Error final</option>
+    						<option id="cancelInter" value="9">Cancelación intermedia</option>
+    						<option id="cancelFin" value="10">Cancelación final</option>
+    						<option id="timeIni" value="11">Tiempo inicial</option>
+    						<option id="timeInter" value="12">Tiempo intermedio</option>
+    						<option id="compenInter" value="13">Compensación intermedia</option>
+    						<option id="compenFin" value="14">Compensación final</option>
+    						<option id="vinculoIni" value="15">Vínculo inicial</option>
+    						<option id="vinculoInter" value="16">Vínculo intermedio</option>
+    						<option id="vinculoFin" value="17">Vínculo final</option>
+    						<option id="reglaIni" value="18">Regla inicial</option>
+    						<option id="reglaInter" value="19">Regla intermedia</option>
+    						<option id="mulIni" value="20">Múltiple inicio</option>
+    						<option id="mulInter" value="21">Múltiple intermedio</option>
+    						<option id="mulFin" value="22">Múltiple final</option>
   						</select>
-  						<button class="bottom-selec">Seleccionar</button>
+  						<button id="buttonEvento" class="bottom-selec">Seleccionar</button>
 
-  						<h4 class="text-left">Nodos de decisiï¿½n:</h4>
-  						<select class="selected2">
-    						<option >Seleccione uno:</option>
-   	 						<option >Decisï¿½n basada en datos</option>
-    						<option >Decisiï¿½n basada en eventos</option>
-    						<option >Decisiï¿½n mï¿½ltiple</option>
-    						<option >Decisiï¿½n uniï¿½n compleja</option>
-    						<option >Decisiï¿½n uniï¿½n paralela</option>
-    						<option >Decisiï¿½n combinaciï¿½n inclusiva</option>
+  						<h4 class="text-left">Nodos de decisión:</h4>
+  						<select class="selected2" onchange="decidir(this.value)">
+    						<option value="">Seleccione uno:</option>
+   	 						<option id="decDatos" value="1">Decisión basada en datos</option>
+    						<option id="decEventos" value="2">Decisión basada en eventos</option>
+    						<option id="decMul" value="3">Decisión múltiple</option>
+    						<option id="decUniCompleja" value="4">Decisión unión compleja</option>
+    						<option id="decUniParalela" value="5">Decisión unión paralela</option>
+    						<option id="decCombInclusiva" value="6">Decisión combinación inclusiva</option>
   						</select>
-  						<button class="bottom-selec">Seleccionar</button>
+  						<button id="buttonDecision" class="bottom-selec">Seleccionar</button>
 
 						<canvas id="canvas2" class="style-object"></canvas>
   					</div>
